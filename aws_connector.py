@@ -99,7 +99,7 @@ def process_url(service):
 
 def parse_endpoints(driver_content):
     to_return = set()
-    match = re.findall("(?:\w+ndpoint)&quot;\s*:\s*&quot;\s*([^&]+)", driver_content)
+    match = re.findall(r"\b\w+ndpoint&quot;\s*:\s*&quot;([^&]+)", driver_content)
     for item in match:
         to_return.add(item)
     return to_return
