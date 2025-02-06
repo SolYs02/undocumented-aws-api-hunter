@@ -42,11 +42,11 @@ def main(args):
         javascript = aws_connector.find_javascript_urls(driver.page_source)
         for script in javascript:
             if script not in queried_javascript:
-                logging.info(f"dasdsasdasdadsadsasda")
                 js_content = aws_connector.fetch_service_model(script)
                 if js_content is None:
                     continue
 
+                logging.info(f"dasdsasdasdadsadsasda {js_content}")
                 aws_connector.parse_service_model(js_content, script, True, MODEL_DIR)
                 queried_javascript.add(script)
     
