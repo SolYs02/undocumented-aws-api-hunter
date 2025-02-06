@@ -40,10 +40,12 @@ def parse_service_model(js_content, download_location, save, MODEL_DIR):
             continue
         
         if not save:
+            logging.info(f"{datetime.now()} INFO - saaaaaaaaaaa")
             # Just print it
             print(json.dumps(parsed_model, indent=4))
         # Need to determine if we have this file already
         elif os.path.exists(f"{MODEL_DIR}/{parsed_model['metadata']['uid']}-{parsed_model['metadata']['protocol']}.json"):
+            logging.info(f"{datetime.now()} INFO - dsadsadssda:")
             # Integrate
             # TODO: there are some with alternative serviceFullNames and perhaps other info
             # Need to explore if there is enough of them to have special handling here.
