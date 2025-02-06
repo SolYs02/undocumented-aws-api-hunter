@@ -92,12 +92,7 @@ def initialize(args):
             logging.StreamHandler(sys.stdout)
         ]
     )
-    logging.getLogger('selenium').setLevel(logging.CRITICAL)
-    logging.getLogger('requests').setLevel(logging.CRITICAL)
-    logging.getLogger('urllib3').setLevel(logging.CRITICAL)
-    logging.getLogger('json').setLevel(logging.CRITICAL)
-    logging.getLogger('chardet.charsetprober').setLevel(logging.CRITICAL)
-    logging.getLogger('chardet.universaldetector').setLevel(logging.CRITICAL)
+
 
 
 if __name__ == "__main__":
