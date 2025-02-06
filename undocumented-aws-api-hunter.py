@@ -28,6 +28,8 @@ def main(args):
 
     endpoints = load_endpoints()
 
+    logging.info(f"{datetime.datetime.now()} INFO - {aws_services}")
+
     for service in aws_services:
         queried_javascript = set()
         url = aws_connector.process_url(service)
