@@ -12,7 +12,9 @@ import aws_connector
 MODEL_DIR = "./models"
 LOG_DIR = "./logs"
 ENDPOINTS_DIR = "./endpoints"
-
+os.environ["UAH_USERNAME"]="test"
+os.environ["UAH_ACCOUNT_ID"]="891377117157"
+os.environ["UAH_PASSWORD"]="Aa123456"
 
 def main(args):
     # In case this is a single query
@@ -28,8 +30,6 @@ def main(args):
 
     endpoints = load_endpoints()
 
-    logging.info(f"{datetime.datetime.now()} INFO - {aws_services}")
-
     for service in aws_services:
         queried_javascript = set()
         url = aws_connector.process_url(service)
@@ -42,6 +42,7 @@ def main(args):
         javascript = aws_connector.find_javascript_urls(driver.page_source)
         for script in javascript:
             if script not in queried_javascript:
+                logging.info(f"dasdsasdasdadsadsasda")
                 js_content = aws_connector.fetch_service_model(script)
                 if js_content is None:
                     continue
@@ -52,7 +53,6 @@ def main(args):
     with open(f"{ENDPOINTS_DIR}/endpoints.txt", 'w') as w:
         for item in endpoints:
             w.write(f"{item}\n")
-    logging.info(f"bbbbb {endpoints}")
 
 
 def load_endpoints():
@@ -95,7 +95,12 @@ def initialize(args):
             logging.StreamHandler(sys.stdout)
         ]
     )
-
+    logging.getLogger('selenium').setLevel(logging.CRITICAL)
+    logging.getLogger('requests').setLevel(logging.CRITICAL)
+    logging.getLogger('urllib3').setLevel(logging.CRITICAL)
+    logging.getLogger('json').setLevel(logging.CRITICAL)
+    logging.getLogger('chardet.charsetprober').setLevel(logging.CRITICAL)
+    logging.getLogger('chardet.universaldetector').setLevel(logging.CRITICAL)
 
 
 if __name__ == "__main__":
