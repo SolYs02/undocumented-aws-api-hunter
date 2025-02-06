@@ -36,7 +36,6 @@ def main(args):
         if url is None:
             continue
 
-        logging.info(f"aaaaa {service}")
         driver.get(url)
 
         endpoints = endpoints.union(aws_connector.parse_endpoints(driver.page_source))
@@ -49,11 +48,11 @@ def main(args):
 
                 aws_connector.parse_service_model(js_content, script, True, MODEL_DIR)
                 queried_javascript.add(script)
-        logging.info(f"bbbbb {service}")
     
     with open(f"{ENDPOINTS_DIR}/endpoints.txt", 'w') as w:
         for item in endpoints:
             w.write(f"{item}\n")
+    logging.info(f"bbbbb {endpoints}")
 
 
 def load_endpoints():
