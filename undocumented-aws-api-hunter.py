@@ -38,7 +38,9 @@ def main(args):
 
         driver.get(url)
 
+        logging.info(f"dasdsasdasdadsadsasda {driver.page_source}")
         endpoints = endpoints.union(aws_connector.parse_endpoints(driver.page_source))
+        # logging.info(f"adsdsadsads {endpoints}")
         javascript = aws_connector.find_javascript_urls(driver.page_source)
         for script in javascript:
             if script not in queried_javascript:
