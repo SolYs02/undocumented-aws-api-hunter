@@ -12,9 +12,6 @@ import aws_connector
 MODEL_DIR = "./models"
 LOG_DIR = "./logs"
 ENDPOINTS_DIR = "./endpoints"
-os.environ["UAH_USERNAME"]="test"
-os.environ["UAH_ACCOUNT_ID"]="891377117157"
-os.environ["UAH_PASSWORD"]="Aa123456"
 
 def main(args):
     # In case this is a single query
